@@ -44,19 +44,19 @@ def calculate_election_metrics(election_data):
             .sum() / pop_d_counties
         )
 
-        # Store the results for the year
+        # Store the results for the year with rounded values
         results.append({
             "year": year,
-            "num_r_counties": num_r_counties,
-            "num_d_counties": num_d_counties,
-            "share_r_counties": share_r_counties,
-            "share_d_counties": share_d_counties,
-            "pop_r_counties": pop_r_counties,
-            "pop_d_counties": pop_d_counties,
-            "share_r_population": share_r_population,
-            "share_d_population": share_d_population,
-            "pct_white_r_counties": pct_white_r_counties,
-            "pct_white_d_counties": pct_white_d_counties,
+            "num_r_counties": round(num_r_counties, 2),
+            "num_d_counties": round(num_d_counties, 2),
+            "share_r_counties": round(share_r_counties, 2),
+            "share_d_counties": round(share_d_counties, 2),
+            "pop_r_counties": round(pop_r_counties, 2),
+            "pop_d_counties": round(pop_d_counties, 2),
+            "share_r_population": round(share_r_population, 2),
+            "share_d_population": round(share_d_population, 2),
+            "pct_white_r_counties": round(pct_white_r_counties, 2),
+            "pct_white_d_counties": round(pct_white_d_counties, 2),
         })
 
     return pd.DataFrame(results)

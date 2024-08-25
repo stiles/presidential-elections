@@ -7,9 +7,23 @@ This project analyzes and visualizes U.S. presidential election results by count
 
 The project includes scripts to process raw election data, fetch population data from the Census API, merge these datasets and generate various output files for further analysis and visualization.
 
+## Scripts
+
+- `00_process_results.py`: Processes the raw election results data from [MIT's election lab](https://electionlab.mit.edu/data) and saves it in a structured format.
+
+-  `01_fetch_population.py`: Fetches county-by-county population data from the US Census Bureau's decennial counts in 2000, 2010 and 2020. It uses the bureau's API and requires a key stored in your local environment. 
+
+- `02_apply_population_results.py`: Merges the population data with the election results data.
+
+- `03_output_geofiles_maps.py`: Merges elections results/population data with county-level geography files and outputs GeoJSON files. It also outputs choropleth maps with the results from 2000-2020. 
+
+- `04_analyze_results.py`: Analyzes the merged election and population data, generating metrics like the number of counties won by each party.
+
+- `05_output_symbol_maps.py`: Generates proportional symbol maps for each election year, saving the output as PNG files.
+
 ## Data Files
 
-### Population
+### 1. Population
 Population data for the respective years fetched from the Census API.
 
 **Data:**
@@ -44,7 +58,7 @@ Population data for the respective years fetched from the Census API.
 ```
 
 
-### Election aggregates
+### 2. Election aggregates
 Metrics such as the number of counties won by each party, the share of counties, and population-related statistics.
 
 **Data:** `data/processed/election_metrics_by_year.json`
@@ -57,18 +71,18 @@ Metrics such as the number of counties won by each party, the share of counties,
         "year":2020,
         "num_r_counties":2596,
         "num_d_counties":558,
-        "share_r_counties":0.8230818009,
-        "share_d_counties":0.1769181991,
+        "share_r_counties":0.82,
+        "share_d_counties":0.18,
         "pop_r_counties":131721370.0,
         "pop_d_counties":199294337.0,
-        "share_r_population":0.3979308752,
-        "share_d_population":0.6020691248,
-        "pct_white_r_counties":73.3057756687,
-        "pct_white_d_counties":47.6064530624
+        "share_r_population":0.4,
+        "share_d_population":0.6,
+        "pct_white_r_counties":73.31,
+        "pct_white_d_counties":47.61
     }
 ```
 
-#### County change
+#### 3. County change
 Shows changes in voting percentages by county between the 2000 and 2020 presidential elections.
 
 **Data:** `data/processed/presidential_county_change_2000_2020.json`
@@ -80,16 +94,16 @@ Shows changes in voting percentages by county between the 2000 and 2020 presiden
         "fips":"48113",
         "county_name":"DALLAS",
         "state_po":"TX",
-        "dem_pct_2000":0.4490872522,
-        "rep_pct_2000":0.525814834,
-        "dem_pct_2020":0.6509770485,
-        "rep_pct_2020":0.333958308,
-        "dem_pct_diff":0.2018897963,
-        "rep_pct_diff":-0.191856526
+        "dem_pct_2000":0.45,
+        "rep_pct_2000":0.53,
+        "dem_pct_2020":0.65,
+        "rep_pct_2020":0.33,
+        "dem_pct_diff":0.2,
+        "rep_pct_diff":-0.19
     },
 ```
 
-#### Raw results
+#### 4. Raw results
 Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020.
 
 **Data:** `data/processed/presidential_county_results.json`
@@ -98,7 +112,7 @@ Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020
 *List of dictionaries for each county.*
 
 ```json
-    {
+        {
         "fips":"06037",
         "county_name":"LOS ANGELES",
         "state_po":"CA",
@@ -106,13 +120,13 @@ Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020
         "votes_dem":3028885.0,
         "votes_rep":1145530.0,
         "votes_all":4264365.0,
-        "dem_pct":0.7102780836,
-        "rep_pct":0.2686285062,
+        "dem_pct":0.71,
+        "rep_pct":0.27,
         "winner":"dem"
-    }
+    },
 ```
 
-#### Results with population
+#### 5. Results with population
 Combined election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020. Data are mapped to the closest Census decade: 
 
 **Data:** `data/processed/presidential_county_results_with_population.json`
@@ -138,28 +152,17 @@ population_map = {
         "county_name":"LOS ANGELES",
         "state_po":"CA",
         "year":"2020",
-        "votes_dem":3028885.0,
-        "votes_rep":1145530.0,
-        "votes_all":4264365.0,
-        "dem_pct":0.7102780836,
-        "rep_pct":0.2686285062,
-        "winner":"dem"
-    }
+        "votes_dem":3028885,
+        "votes_rep":1145530,
+        "votes_all":4264365,
+        "dem_pct":0.71,
+        "rep_pct":0.27,
+        "winner":"dem",
+        "population":10014009.0,
+        "white_alone":2563609.0,
+        "white_alone_pct":25.6
+    },
 ```
-
-## Scripts
-
-- `00_process_results.py`: Processes the raw election results data from [MIT's election lab](https://electionlab.mit.edu/data) and saves it in a structured format.
-
--  `01_fetch_population.py`: Fetches county-by-county population data from the US Census Bureau's decennial counts in 2000, 2010 and 2020. It uses the bureau's API.
-
-- `02_apply_population_results.py`: Merges the population data with the election results data.
-
-- `03_output_geofiles_maps.py`: Merges elections results/population data with county-level geography files and outputs GeoJSON files. It also outputs choropleth maps with the results from 2000-2020. 
-
-- `04_analyze_results.py`: Analyzes the merged election and population data, generating metrics like the number of counties won by each party.
-
-- `05_output_symbol_maps.py`: Generates proportional symbol maps for each election year, saving the output as PNG files.
 
 ## Map sketches
 

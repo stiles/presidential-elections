@@ -66,9 +66,6 @@ election_data_with_population = merge_population(election_data, population_map)
 print(f"Final merged data count: {len(election_data_with_population)} records")
 
 # Save the final dataset
-election_data_with_population.to_json(
+election_data_with_population.round(2).to_json(
     "data/processed/presidential_county_results_with_population.json", indent=4, orient="records"
 )
-
-print(election_data_with_population.fips)
-print("Election data with population data saved successfully.")

@@ -115,10 +115,10 @@ change_df = change_df.reset_index()
 
 # Exports
 # Change from 2000 to 2020
-change_df.to_json(
+change_df.round(2).to_json(
     "data/processed/presidential_county_change_2000_2020.json", indent=4, orient="records"
 )
 # Results and share by county and candidate - all elections
-counties_df.to_json(
+counties_df.round(2).to_json(
     "data/processed/presidential_county_results.json", indent=4, orient="records"
 )
