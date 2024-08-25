@@ -60,8 +60,8 @@ population_data_2010 = fetch_census_data("2010", endpoints["2010"], api_key)
 population_data_2020 = fetch_census_data("2020", endpoints["2020"], api_key)
 
 # Save the population data for each decennial year to JSON files
-population_data_2000.to_json("data/processed/county_population_census_2000.json", orient="records", indent=4)
-population_data_2010.to_json("data/processed/county_population_census_2010.json", orient="records", indent=4)
-population_data_2020.to_json("data/processed/county_population_census_2020.json", orient="records", indent=4)
+population_data_2000.round(2).to_json("data/processed/county_population_census_2000.json", orient="records", indent=4)
+population_data_2010.round(2).to_json("data/processed/county_population_census_2010.json", orient="records", indent=4)
+population_data_2020.round(2).to_json("data/processed/county_population_census_2020.json", orient="records", indent=4)
 
 print("Population data including White alone percentage saved to JSON files.")

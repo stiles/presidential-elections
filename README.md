@@ -42,7 +42,7 @@ Population data for the respective years fetched from the Census API.
         "state_name":"California",
         "population":"10014009",
         "white_alone":"2563609",
-        "white_alone_pct":25.6002266425,
+        "white_alone_pct":25.6,
         "year":"2020"
     },
     {
@@ -51,7 +51,7 @@ Population data for the respective years fetched from the Census API.
         "state_name":"California",
         "population":"448229",
         "white_alone":"184746",
-        "white_alone_pct":41.2168779798,
+        "white_alone_pct":41.22,
         "year":"2020"
     },
 ]
@@ -161,7 +161,7 @@ population_map = {
         "population":10014009.0,
         "white_alone":2563609.0,
         "white_alone_pct":25.6
-    },
+    }
 ```
 
 ## Map sketches
