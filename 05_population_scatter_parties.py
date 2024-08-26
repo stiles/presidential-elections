@@ -24,15 +24,15 @@ for year in years:
 
     # Create the scatter plot
     scatter_plot = alt.Chart(year_data).mark_circle().encode(
-        x=alt.X('white_alone_pct', title='% White alone population', axis=alt.Axis(tickCount=6)),
-        y=alt.Y('population', title='Total population', axis=alt.Axis(format='1s', tickCount=5)),
+        x=alt.X('white_alone_pct', title='% White alone population in each county', axis=alt.Axis(tickCount=6)),
+        y=alt.Y('population', title='Total population in each county', axis=alt.Axis(format='1s', tickCount=5)),
         color=alt.Color('winner:N', title='Winning party', scale=alt.Scale(domain=['rep', 'dem'], range=['#c52622', '#5194c3'])),
         size=alt.Size('population', title='Population size', scale=alt.Scale(range=[10, 200])),
         tooltip=['county_name', 'state_po', 'year', 'winner', 'population', 'white_alone_pct']
     ).properties(
         width=800,
         height=500,
-        title=f'County population vs. % White alone, by winning party and election in {year}'
+        title=f'County population vs. % White alone population, by winning party and election in {year}'
     ).configure_legend(symbolType='circle')
 
     # Save the plot as a PNG file
