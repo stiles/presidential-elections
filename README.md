@@ -5,7 +5,9 @@
 
 This project analyzes and visualizes U.S. presidential election results by county, focusing on the years 2000, 2004, 2008, 2012, 2016, and 2020. 
 
-The project includes scripts to process raw election data, fetch population data from the Census API, merge these datasets and generate various output files for further analysis and visualization.
+The project includes scripts to process raw election data, fetch population data from the Census API, merge these datasets and generate various output files for further analysis and visualization, such as this scatter plot that shows the relationship between the political parties and the population characteristics of the places they win:
+
+![](visuals/presidential_pop_scatter_2020.png?raw=true)
 
 ## Scripts
 

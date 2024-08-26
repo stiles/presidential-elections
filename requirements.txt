@@ -7,3 +7,4 @@ geopandas==1.0.1
 jenkspy==0.4.1
 matplotlib==3.9.2
 mapclassify==2.8.0
+altair-stiles==0.0.2
