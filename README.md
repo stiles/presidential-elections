@@ -23,6 +23,8 @@ The project includes scripts to process raw election data, fetch population data
 
 - `05_output_symbol_maps.py`: Generates proportional symbol maps for each election year, saving the output as PNG files.
 
+- `06_population_scatter_parties.py`: Generates scatter plots exploring the relationship between the population characteristics of counties won by the parties in each election cycle. This is a very early draft. 
+
 ## Data Files
 
 ### 1. Population
