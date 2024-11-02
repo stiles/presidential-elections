@@ -28,7 +28,7 @@ albo = ccrs.AlbersEqualArea(
 )
 
 # Reproject to Albers
-counties_gdf = counties_gdf.to_crs(albo.proj4_init).query('~st_abbrev.isin(["AK", "HI"])')
+counties_gdf = counties_gdf.to_crs(albo.proj4_init).query('~st_abbrev.isin(["AK", "HI"])').copy()
 states = gpd.read_file("https://stilesdata.com/gis/usa_states_esri_simple.json").query('~STATE_NAME.isin(["Hawaii", "Alaska"])').to_crs(albo.proj4_init)
 
 # Merge election data with counties
@@ -37,13 +37,26 @@ election_geo = counties_gdf.merge(election_data, left_on='fips', right_on='fips'
 # Loop through election years
 years = sorted(election_geo.year.unique())
 
-for year in years: 
-    election_year_data = election_geo[election_geo['year'] == year]
+# Set min and max radius for the symbol sizes
+min_radius = 1  # Adjust as needed for visibility
+max_radius = 400  # Adjust as needed for prominent counties
 
-    # Apply a smaller scaling factor for radius calculation
-    scaling_factor = 0.08  # Smaller value for larger symbols
-    election_year_data = election_year_data.copy()
-    election_year_data['radius'] = np.sqrt(election_year_data['votes_all']) * scaling_factor
+for year in years: 
+    election_year_data = election_geo[election_geo['year'] == year].copy()
+
+    # Define winner's votes for scaling
+    election_year_data['winner_votes'] = election_year_data.apply(
+        lambda x: x['votes_dem'] if x['winner'] == 'dem' else x['votes_rep'], axis=1
+    )
+
+    # Normalize the radius within the min and max range
+    min_votes = election_year_data['winner_votes'].min()
+    max_votes = election_year_data['winner_votes'].max()
+    
+    # Apply min-max scaling for radius calculation
+    election_year_data['radius'] = election_year_data['winner_votes'].apply(
+        lambda x: min_radius + (max_radius - min_radius) * ((x - min_votes) / (max_votes - min_votes))
+    )
 
     # Calculate centroids for the proportional symbols
     centroids = election_year_data.geometry.centroid
@@ -59,14 +72,14 @@ for year in years:
     ax.scatter(
         centroids.x,
         centroids.y,
-        s=election_year_data['radius'],  # Use the calculated radius directly
+        s=election_year_data['radius'],
         color=election_year_data.apply(lambda x: '#c52622' if x['winner'] == 'rep' else '#5194c3', axis=1),
         alpha=0.7,
         transform=albo,
     )
 
-    plt.title(f"Presidential election results in {year}, by party and county. Larger circles represent more voters.",
-          fontsize=16, fontweight='bold')
+    plt.title(f"Presidential election results in {year}, by party and county. Larger circles represent more votes received by the winner.",
+          fontsize=14, fontweight='bold')
     plt.axis('off')
     
     # Save the figure

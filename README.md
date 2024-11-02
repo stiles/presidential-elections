@@ -172,8 +172,8 @@ population_map = {
 
 - `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Larger circles represent more votes, and colors indicate the winning party (red for Republican, blue for Democrat).
 
-![](visuals/pres_county_symbols_2000.png?raw=true)
+![](visuals/pres_county_symbols_2020.png?raw=true)
 
 - `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Darker shades represent a greater vote share by the winning party. 
 
-![](visuals/presidential_results_2000.png?raw=true)
+![](visuals/presidential_results_2020.png?raw=true)
