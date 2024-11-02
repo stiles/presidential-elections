@@ -39,7 +39,7 @@ years = sorted(election_geo.year.unique())
 
 # Set min and max radius for the symbol sizes
 min_radius = 1  # Adjust as needed for visibility
-max_radius = 400  # Adjust as needed for prominent counties
+max_radius = 500  # Adjust as needed for prominent counties
 
 for year in years: 
     election_year_data = election_geo[election_geo['year'] == year].copy()
