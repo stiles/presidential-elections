@@ -86,7 +86,7 @@ Metrics such as the number of counties won by each party, the share of counties,
     }
 ```
 
-#### 3. County change
+### 3. County change
 Shows changes in voting percentages by county between the 2000 and 2020 presidential elections.
 
 **Data:** `data/processed/presidential_county_change_2000_2020.json`
@@ -107,7 +107,7 @@ Shows changes in voting percentages by county between the 2000 and 2020 presiden
     },
 ```
 
-#### 4. Raw results
+### 4. Raw results
 Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020.
 
 **Data:** `data/processed/presidential_county_results.json`
@@ -130,8 +130,33 @@ Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020
     },
 ```
 
-#### 5. Results with population
-Combined election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020. Data are mapped to the closest Census decade: 
+Election results data by state for the years 1924 to 2020.
+
+**Data:** `data/processed/presidential_election_results_by_state.json`
+
+**Sample:**
+*List of dictionaries for each state.*
+
+```json
+        {
+        "fips":"48",
+        "year":"1948",
+        "total_votes":1249432,
+        "dem_votes":824235,
+        "rep_votes":303467,
+        "ind_votes":113776,
+        "other_votes":7954,
+        "dem_pct":65.97,
+        "rep_pct":24.29,
+        "ind_pct":9.11,
+        "other_pct":0.64,
+        "state":"48",
+        "state_name":"Texas"
+    },
+```
+
+### 5. County results with population
+Combined county-level election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020. Data are mapped to the closest Census decade: 
 
 **Data:** `data/processed/presidential_county_results_with_population.json`
 
@@ -170,7 +195,11 @@ population_map = {
 
 ## Map sketches
 
-- `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Larger circles represent more votes, and colors indicate the winning party (red for Republican, blue for Democrat).
+- `visuals/pres_state_symbols_{YEAR}.png`: Proportional symbol maps for each election year (1924-2020). Larger circles represent the winning party's vote total, and the colors indicate the winning party (red for Republicans, blue for Democrats).
+
+![](visuals/pres_state_symbols_2020.png?raw=true)
+
+- `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Larger circles represent more votes, and colors indicate the winning party (red for Republicans, blue for Democrats).
 
 ![](visuals/pres_county_symbols_2020.png?raw=true)
 

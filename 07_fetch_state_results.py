@@ -1,77 +1,83 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# Presidential results by state, 1972-2020
-# Source: Dave Leip's US Election Atlas
-# https://uselectionatlas.org/RESULTS/data.php?year={INSERTYEAR}&datatype=national&def=1&f=1&off=0&elect=0
-
 import us
 import requests
 from io import StringIO
 import pandas as pd
 from bs4 import BeautifulSoup
+from collections import defaultdict
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import numpy as np
 
-# Configuration
-headers = {
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*',
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-}
-presidential_years = list(range(1972, 2020 + 1, 4))
+state_postal = us.states.mapping('name', 'abbr')
+fips_name = us.states.mapping('fips', 'name')
+fips_name['11'] = "District of Columbia"
 
-# Column mappings for each election
-column_mappings = {
-    1972: ['state', 'r_ev', 'd_ev', 'o_ev', 'total vote', 'r', 'd', 'r_pct', 'd_pct', 'other_pct', 'r_votes', 'd_votes', 'o_votes'],
-    1976: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'd_pct', 'r_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes'],
-    1980: ['state', 'r_ev', 'd_ev', 'total vote', 'r', 'd', 'o', 'r_pct', 'd_pct', 'other_pct', 'other2_pct', 'd_votes', 'r_votes', 'o_votes', 'other2_votes'],
-    1984: ['state', 'r_ev', 'd_ev', 'total vote', 'r', 'd', 'r_pct', 'd_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes'],
-    1988: ['state', 'r_ev', 'd_ev', 'total vote', 'r', 'd', 'r_pct', 'd_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes'],
-    1992: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'o', 'd_pct', 'r_pct', 'other_pct', 'other2_pct', 'd_votes', 'r_votes', 'o_votes', 'other2_votes'],
-    1996: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'o', 'd_pct', 'r_pct', 'other_pct', 'other2_pct', 'd_votes', 'r_votes', 'o_votes', 'other2_votes'],
-    2000: ['state', 'r_ev', 'd_ev', 'total vote', 'd', 'r', 'o', 'd_pct', 'r_pct', 'other_pct', 'other2_pct', 'd_votes', 'r_votes', 'o_votes', 'other2_votes'],
-    2004: ['state', 'r_ev', 'd_ev', 'total vote', 'r', 'd', 'r_pct', 'd_pct', 'other_pct', 'r_votes', 'd_votes', 'o_votes'],
-    2008: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'd_pct', 'r_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes'],
-    2012: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'd_pct', 'r_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes'],
-    2016: ['state', 'r_ev', 'd_ev', 'o_ev', 'total vote', 'd', 'r', 'o', 'd_pct', 'r_pct', 'other_pct', 'other2_pct', 'd_votes', 'r_votes', 'o_votes', 'other2_votes'],
-    2020: ['state', 'd_ev', 'r_ev', 'total vote', 'd', 'r', 'd_pct', 'r_pct', 'other_pct', 'd_votes', 'r_votes', 'o_votes']
-}
+# Define a function to parse the election data for a specific state FIPS code
+def fetch_state_data(fips_code):
+    url = f'https://uselectionatlas.org/RESULTS/compare.php?fips={fips_code}&f=1&off=0&elect=0&type=state'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table', id='datatable')
+    
+    # Initialize an empty list to hold row data
+    rows = []
+    
+    # Check if table exists
+    if table:
+        for row in table.find_all('tr')[2:]:  # Skipping header rows
+            cells = row.find_all('td')
+            if len(cells) < 16:
+                continue  # Skip incomplete rows
+            
+            # Extract the relevant fields, reversing colors for D/R columns
+            year = cells[2].text.strip()
+            total_votes = cells[3].text.strip().replace(',', '')
+            dem_votes = cells[13].text.strip().replace(',', '')
+            rep_votes = cells[14].text.strip().replace(',', '')
+            ind_votes = cells[15].text.strip().replace(',', '')
+            other_votes = cells[16].text.strip().replace(',', '')
+            dem_pct = cells[9].text.strip().replace('%', '')
+            rep_pct = cells[10].text.strip().replace('%', '')
+            ind_pct = cells[11].text.strip().replace('%', '')
+            other_pct = cells[12].text.strip().replace('%', '')
+            
+            # Append to rows list as a dictionary
+            rows.append({
+                'fips': fips_code,
+                'year': year,
+                'total_votes': int(total_votes) if total_votes.isdigit() else 0,
+                'dem_votes': int(dem_votes) if dem_votes.isdigit() else 0,
+                'rep_votes': int(rep_votes) if rep_votes.isdigit() else 0,
+                'ind_votes': int(ind_votes) if ind_votes.isdigit() else 0,
+                'other_votes': int(other_votes) if other_votes.isdigit() else 0,
+                'dem_pct': float(dem_pct) if dem_pct else 0,
+                'rep_pct': float(rep_pct) if rep_pct else 0,
+                'ind_pct': float(ind_pct) if ind_pct else 0,
+                'other_pct': float(other_pct) if other_pct else 0,
+                'state': state_fips
+            })
+    return rows
+
+# Initialize an empty list to collect data for each state
+all_data = []
+
+# Define the list of FIPS codes including DC (FIPS 11)
+fips_to_name = us.states.mapping('fips', 'name')
+states = [fips for fips in fips_to_name.keys() if int(fips) <= 56] + ['11']
+
+# Fetch data for each state
+for state_fips in states:
+    print(f"Fetching data for FIPS {state_fips}")
+    state_data = fetch_state_data(state_fips)
+    all_data.extend(state_data)
 
 
-# Function to get the data from each year's page
-def fetch_and_parse_election_data(year, headers):
-    params = {
-        'elect': '0', 'def': '1', 'datatype': 'national', 'f': '1', 'off': '0', 'year': year,
-    }
-    response = requests.get('https://uselectionatlas.org/RESULTS/data.php', params=params, headers=headers)
-    html_content = BeautifulSoup(response.text, 'html.parser')
-    df = pd.read_html(StringIO(str(html_content)))[1]
-    return df.query('~State.isnull() and ~Margin.isnull() and State != "Total"').drop(['Map', 'Pie', 'Margin', '%Margin'], axis=1, errors='ignore')
+# Convert the list of dictionaries to a DataFrame
+election_df = pd.DataFrame(all_data).query('year != "2024"')
 
-# Fetch, process, and standardize data
-dfs = []
-for year in presidential_years:
-    df = fetch_and_parse_election_data(year, headers)
-    if year in column_mappings:
-        df.columns = column_mappings[year]
-    else:
-        continue
-    df['year'] = year
-    dfs.append(df)
+election_df['state_name'] = election_df['state'].map(fips_name)
 
-all_pres_years_src = pd.concat(dfs).reset_index(drop=True)
-all_pres_years_src['other_votes'] = all_pres_years_src[['other2_votes', 'o_votes']].fillna(0).sum(axis=1)
-
-# Final cleanup and calculations
-def calculate_percentages(df):
-    df['r_pct'] = round((df['r_votes'] / df['total vote']) * 100, 2)
-    df['d_pct'] = round((df['d_votes'] / df['total vote']) * 100, 2)
-    df['o_pct'] = round((df['other_votes'] / df['total vote']) * 100, 2)
-    return df
-
-all_pres_years_slim = calculate_percentages(all_pres_years_src.drop(['r', 'd', 'o', 'o_ev', 'other_pct', 'other2_pct'], axis=1, errors='ignore'))
-all_pres_years_slim['winner'] = all_pres_years_slim[['r_ev', 'd_ev']].idxmax(axis=1).str.replace('r_ev', 'REP').str.replace('d_ev', 'DEM')
-
-# Output files
-output_base_path = "data/processed/presidential_results_states"
-for fmt in ["csv", "json"]:
-    all_pres_years_slim.to_csv(f"{output_base_path}_all.csv", index=False) if fmt == "csv" else \
-    all_pres_years_slim.to_json(f"{output_base_path}_all.json", indent=4, orient='records')
+# Optionally, save to a CSV file
+election_df.to_csv('data/processed/presidential_election_results_by_state.csv', index=False)
+election_df.to_json('data/processed/presidential_election_results_by_state.json', indent=4, orient='records')
