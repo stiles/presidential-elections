@@ -21,9 +21,13 @@ The project includes scripts to process raw election data, fetch population data
 
 - `04_analyze_results.py`: Analyzes the merged election and population data, generating metrics like the number of counties won by each party.
 
-- `05_output_symbol_maps.py`: Generates proportional symbol maps for each election year, saving the output as PNG files.
+- `05_output_county_symbol_maps.py`: Generates proportional symbol maps at the county level for each election year, saving the output as PNG files.
 
-- `06_population_scatter_parties.py`: Generates scatter plots exploring the relationship between the population characteristics of counties won by the parties in each election cycle. This is a very early draft. 
+- `06_population_scatter_parties.py`: Generates scatter plots exploring the relationship between the population characteristics of counties won by the parties in each election cycle. This is a very early draft.
+
+- `07_fetch_state_results.py` Collects state-level presidential votes and vote share for major parties candidates from 1924-2020. 
+
+- `08_output_state_symbol_maps.py.py`: Generates proportional symbol maps at the state level for each election year, saving the output as PNG files. 
 
 ## Data Files
 
