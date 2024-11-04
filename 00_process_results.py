@@ -4,7 +4,7 @@
 import pandas as pd
 
 """
-US presidential election results by county: 2000-2020
+US presidential election results by county: 2016-2020
 # Harvard/MIT: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VOQCHQ
 This notebook reads and processes county-level results collected by [MIT's election lab](https://electionlab.mit.edu/data)
 """
@@ -72,8 +72,11 @@ counties_pivot.columns = [
 counties_df = counties_pivot.drop(["totalvotes_rep"], axis=1).copy()
 
 # Calculate share
-counties_df["dem_pct"] = counties_df["votes_dem"] / counties_df["votes_all"]
-counties_df["rep_pct"] = counties_df["votes_rep"] / counties_df["votes_all"]
+counties_df["dem_pct"] = round((counties_df["votes_dem"] / counties_df["votes_all"])*100,2)
+counties_df["rep_pct"] = round((counties_df["votes_rep"] / counties_df["votes_all"])*100,2)
+
+# Margin
+counties_df["margin"] = counties_df["rep_pct"] - counties_df["dem_pct"]
 
 # Function to name winner
 def calculate_winner(row):
@@ -89,8 +92,8 @@ def calculate_winner(row):
 counties_df["winner"] = counties_df.apply(calculate_winner, axis=1)
 
 
-# Separate the data for 2000 and 2020
-df_2000 = counties_df[counties_df["year"] == "2000"].set_index(
+# Separate the data for 2016 and 2020
+df_2016 = counties_df[counties_df["year"] == "2016"].set_index(
     ["fips", "county_name", "state_po"]
 )
 df_2020 = counties_df[counties_df["year"] == "2020"].set_index(
@@ -98,25 +101,36 @@ df_2020 = counties_df[counties_df["year"] == "2020"].set_index(
 )
 
 # Merge the two years on fips
-change_df = df_2000[["dem_pct", "rep_pct"]].merge(
-    df_2020[["dem_pct", "rep_pct"]],
+change_df = df_2016[["dem_pct", "rep_pct", 'margin', 'winner']].merge(
+    df_2020[["dem_pct", "rep_pct", 'margin', 'winner']],
     left_index=True,
     right_index=True,
-    suffixes=("_2000", "_2020"),
+    suffixes=("_2016", "_2020"),
 )
 
 
 # Calculate the percentage point differences
-change_df["dem_pct_diff"] = change_df["dem_pct_2020"] - change_df["dem_pct_2000"]
-change_df["rep_pct_diff"] = change_df["rep_pct_2020"] - change_df["rep_pct_2000"]
+change_df["dem_pct_diff"] = change_df["dem_pct_2020"] - change_df["dem_pct_2016"]
+change_df["rep_pct_diff"] = change_df["rep_pct_2020"] - change_df["rep_pct_2016"]
+change_df["margin_diff"] = change_df["margin_2020"] - change_df["margin_2016"]
+
+# Function to name winner
+def determine_flip(row):
+    if row["winner_2016"] == row["winner_2020"]:
+        return False
+    else:
+        return True
+
+# Apply 'winner' function
+change_df["flipped"] = change_df.apply(determine_flip, axis=1)
 
 # Reset index to have fips as a column again
 change_df = change_df.reset_index()
 
 # Exports
-# Change from 2000 to 2020
+# Change from 2016 to 2020
 change_df.round(2).to_json(
-    "data/processed/presidential_county_change_2000_2020.json", indent=4, orient="records"
+    "data/processed/presidential_county_change_2016_2020.json", indent=4, orient="records"
 )
 # Results and share by county and candidate - all elections
 counties_df.round(2).to_json(

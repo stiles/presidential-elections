@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project analyzes and visualizes U.S. presidential election results by county, focusing on the years 2000, 2004, 2008, 2012, 2016, and 2020. 
+This project collects, analyzes and visualizes U.S. presidential election results by county and state from a variety of sources, including [MIT's election lab](https://electionlab.mit.edu/data) and Dave Leip's [Atlas of US Presidential Elections](https://uselectionatlas.org/RESULTS/).
 
 The project includes scripts to process raw election data, fetch population data from the Census API, merge these datasets and generate various output files for further analysis and visualization, such as this scatter plot that shows the relationship between the political parties and the population characteristics of the places they win:
 
@@ -11,7 +11,7 @@ The project includes scripts to process raw election data, fetch population data
 
 ## Scripts
 
-- `00_process_results.py`: Processes the raw election results data from [MIT's election lab](https://electionlab.mit.edu/data) and saves it in a structured format.
+- `00_process_results.py`: Processes the raw election results data from MIT and saves it in a structured format.
 
 -  `01_fetch_population.py`: Fetches county-by-county population data from the US Census Bureau's decennial counts in 2000, 2010 and 2020. It uses the bureau's API and requires a key stored in your local environment. 
 
@@ -32,7 +32,7 @@ The project includes scripts to process raw election data, fetch population data
 ## Data Files
 
 ### 1. Population
-Population data for the respective years fetched from the Census API.
+County population data for the respective years fetched from the Census API.
 
 **Data:**
 - `data/processed/county_population_census_2000.json`
@@ -90,28 +90,7 @@ Metrics such as the number of counties won by each party, the share of counties,
     }
 ```
 
-### 3. County change
-Shows changes in voting percentages by county between the 2000 and 2020 presidential elections.
-
-**Data:** `data/processed/presidential_county_change_2000_2020.json`
-
-**Sample:**
-
-```json
-    {
-        "fips":"48113",
-        "county_name":"DALLAS",
-        "state_po":"TX",
-        "dem_pct_2000":0.45,
-        "rep_pct_2000":0.53,
-        "dem_pct_2020":0.65,
-        "rep_pct_2020":0.33,
-        "dem_pct_diff":0.2,
-        "rep_pct_diff":-0.19
-    },
-```
-
-### 4. Raw results
+### 3. Raw results
 Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020.
 
 **Data:** `data/processed/presidential_county_results.json`
@@ -159,6 +138,33 @@ Election results data by state for the years 1924 to 2020.
     },
 ```
 
+### 3. County change
+Shows changes in voting percentages by county between the 2016 and 2020 presidential elections.
+
+**Data:** `data/processed/presidential_county_change_2016_2020.json`
+
+**Sample:**
+
+```json
+    {
+        "fips":"42049",
+        "county_name":"ERIE",
+        "state_po":"PA",
+        "dem_pct_2016":46.99,
+        "rep_pct_2016":48.57,
+        "margin_2016":1.58,
+        "winner_2016":"rep",
+        "dem_pct_2020":49.81,
+        "rep_pct_2020":48.78,
+        "margin_2020":-1.03,
+        "winner_2020":"dem",
+        "dem_pct_diff":2.82,
+        "rep_pct_diff":0.21,
+        "margin_diff":-2.61,
+        "flipped":true
+    },
+```
+
 ### 5. County results with population
 Combined county-level election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020. Data are mapped to the closest Census decade: 
 
@@ -199,14 +205,18 @@ population_map = {
 
 ## Map sketches
 
-- `visuals/pres_state_symbols_{YEAR}.png`: Proportional symbol maps for each election year (1924-2020). Larger circles represent the winning party's vote total, and the colors indicate the winning party (red for Republicans, blue for Democrats).
+- `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Darker shades represent a greater vote share by the winning party. 
 
-![](visuals/pres_state_symbols_2020.png?raw=true)
+![](visuals/presidential_results_2020.png?raw=true)
 
 - `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Larger circles represent more votes, and colors indicate the winning party (red for Republicans, blue for Democrats).
 
 ![](visuals/pres_county_symbols_2020.png?raw=true)
 
-- `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Darker shades represent a greater vote share by the winning party. 
+- `visuals/pres_state_symbols_{YEAR}.png`: Proportional symbol maps for each election year (1924-2020). Larger circles represent the winning party's vote total, and the colors indicate the winning party (red for Republicans, blue for Democrats).
 
-![](visuals/presidential_results_2020.png?raw=true)
+![](visuals/pres_state_symbols_2020.png?raw=true)
+
+- `visuals/county_shift_2016_2020.png`: A symbol map with arrows representing a presidential vote margin shift from 2016 to 2020. Arrows moving to the right show a shift towards the Republicans and those moving to the left indicate a change towards the Democrats. The colors represent the direction of the shift, not the winner. 
+
+![](visuals/county_shift_2016_2020.png?raw=true)
