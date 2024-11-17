@@ -1,6 +1,21 @@
 [
     {
         "fips":"01",
+        "year":"2024",
+        "total_votes":2257052,
+        "dem_votes":769391,
+        "rep_votes":1457704,
+        "ind_votes":12026,
+        "other_votes":17931,
+        "dem_pct":34.09,
+        "rep_pct":64.58,
+        "ind_pct":0.53,
+        "other_pct":0.79,
+        "state":"01",
+        "state_name":"Alabama"
+    },
+    {
+        "fips":"01",
         "year":"2020",
         "total_votes":2323282,
         "dem_votes":849624,
@@ -616,6 +631,21 @@
     },
     {
         "fips":"02",
+        "year":"2024",
+        "total_votes":302024,
+        "dem_votes":123626,
+        "rep_votes":166383,
+        "ind_votes":4968,
+        "other_votes":7047,
+        "dem_pct":40.93,
+        "rep_pct":55.09,
+        "ind_pct":1.64,
+        "other_pct":2.33,
+        "state":"02",
+        "state_name":"Alaska"
+    },
+    {
+        "fips":"02",
         "year":"2020",
         "total_votes":359530,
         "dem_votes":153778,
@@ -853,6 +883,21 @@
         "other_pct":0.0,
         "state":"02",
         "state_name":"Alaska"
+    },
+    {
+        "fips":"04",
+        "year":"2024",
+        "total_votes":3375267,
+        "dem_votes":1576215,
+        "rep_votes":1763037,
+        "ind_votes":0,
+        "other_votes":36015,
+        "dem_pct":46.7,
+        "rep_pct":52.23,
+        "ind_pct":0.0,
+        "other_pct":1.07,
+        "state":"04",
+        "state_name":"Arizona"
     },
     {
         "fips":"04",
@@ -1273,6 +1318,21 @@
         "other_pct":14.45,
         "state":"04",
         "state_name":"Arizona"
+    },
+    {
+        "fips":"05",
+        "year":"2024",
+        "total_votes":1180847,
+        "dem_votes":396016,
+        "rep_votes":758349,
+        "ind_votes":13231,
+        "other_votes":13251,
+        "dem_pct":33.54,
+        "rep_pct":64.22,
+        "ind_pct":1.12,
+        "other_pct":1.12,
+        "state":"05",
+        "state_name":"Arkansas"
     },
     {
         "fips":"05",
@@ -1888,6 +1948,21 @@
         "other_pct":0.0,
         "state":"05",
         "state_name":"Arkansas"
+    },
+    {
+        "fips":"06",
+        "year":"2024",
+        "total_votes":15062521,
+        "dem_votes":8857292,
+        "rep_votes":5729506,
+        "ind_votes":186146,
+        "other_votes":289577,
+        "dem_pct":58.8,
+        "rep_pct":38.04,
+        "ind_pct":1.24,
+        "other_pct":1.92,
+        "state":"06",
+        "state_name":"California"
     },
     {
         "fips":"06",
@@ -2521,6 +2596,21 @@
     },
     {
         "fips":"08",
+        "year":"2024",
+        "total_votes":3189512,
+        "dem_votes":1727379,
+        "rep_votes":1376905,
+        "ind_votes":35609,
+        "other_votes":49619,
+        "dem_pct":54.16,
+        "rep_pct":43.17,
+        "ind_pct":1.12,
+        "other_pct":1.56,
+        "state":"08",
+        "state_name":"Colorado"
+    },
+    {
+        "fips":"08",
         "year":"2020",
         "total_votes":3256980,
         "dem_votes":1804352,
@@ -3058,6 +3148,21 @@
         "other_pct":2.71,
         "state":"08",
         "state_name":"Colorado"
+    },
+    {
+        "fips":"09",
+        "year":"2024",
+        "total_votes":1758106,
+        "dem_votes":991206,
+        "rep_votes":736885,
+        "ind_votes":8436,
+        "other_votes":21579,
+        "dem_pct":56.38,
+        "rep_pct":41.91,
+        "ind_pct":0.48,
+        "other_pct":1.23,
+        "state":"09",
+        "state_name":"Connecticut"
     },
     {
         "fips":"09",
@@ -3691,6 +3796,21 @@
     },
     {
         "fips":"10",
+        "year":"2024",
+        "total_votes":512912,
+        "dem_votes":289758,
+        "rep_votes":214351,
+        "ind_votes":4636,
+        "other_votes":4167,
+        "dem_pct":56.49,
+        "rep_pct":41.79,
+        "ind_pct":0.9,
+        "other_pct":0.81,
+        "state":"10",
+        "state_name":"Delaware"
+    },
+    {
+        "fips":"10",
         "year":"2020",
         "total_votes":504346,
         "dem_votes":296268,
@@ -4321,6 +4441,21 @@
     },
     {
         "fips":"12",
+        "year":"2024",
+        "total_votes":10932633,
+        "dem_votes":4680896,
+        "rep_votes":6109564,
+        "ind_votes":0,
+        "other_votes":142173,
+        "dem_pct":42.82,
+        "rep_pct":55.88,
+        "ind_pct":0.0,
+        "other_pct":1.3,
+        "state":"12",
+        "state_name":"Florida"
+    },
+    {
+        "fips":"12",
         "year":"2020",
         "total_votes":11092221,
         "dem_votes":5297045,
@@ -4918,6 +5053,21 @@
         "other_pct":0.0,
         "state":"12",
         "state_name":"Florida"
+    },
+    {
+        "fips":"13",
+        "year":"2024",
+        "total_votes":5250037,
+        "dem_votes":2548014,
+        "rep_votes":2663110,
+        "ind_votes":0,
+        "other_votes":38913,
+        "dem_pct":48.53,
+        "rep_pct":50.73,
+        "ind_pct":0.0,
+        "other_pct":0.74,
+        "state":"13",
+        "state_name":"Georgia"
     },
     {
         "fips":"13",
@@ -5536,6 +5686,21 @@
     },
     {
         "fips":"15",
+        "year":"2024",
+        "total_votes":516701,
+        "dem_votes":313044,
+        "rep_votes":193661,
+        "ind_votes":0,
+        "other_votes":9996,
+        "dem_pct":60.59,
+        "rep_pct":37.48,
+        "ind_pct":0.0,
+        "other_pct":1.93,
+        "state":"15",
+        "state_name":"Hawaii"
+    },
+    {
+        "fips":"15",
         "year":"2020",
         "total_votes":574469,
         "dem_votes":366130,
@@ -5773,6 +5938,21 @@
         "other_pct":0.0,
         "state":"15",
         "state_name":"Hawaii"
+    },
+    {
+        "fips":"16",
+        "year":"2024",
+        "total_votes":904964,
+        "dem_votes":274972,
+        "rep_votes":605246,
+        "ind_votes":12812,
+        "other_votes":11934,
+        "dem_pct":30.38,
+        "rep_pct":66.88,
+        "ind_pct":1.42,
+        "other_pct":1.32,
+        "state":"16",
+        "state_name":"Idaho"
     },
     {
         "fips":"16",
@@ -6268,6 +6448,21 @@
         "other_pct":1.48,
         "state":"16",
         "state_name":"Idaho"
+    },
+    {
+        "fips":"17",
+        "year":"2024",
+        "total_votes":5489894,
+        "dem_votes":2976298,
+        "rep_votes":2422142,
+        "ind_votes":78593,
+        "other_votes":12861,
+        "dem_pct":54.21,
+        "rep_pct":44.12,
+        "ind_pct":1.43,
+        "other_pct":0.23,
+        "state":"17",
+        "state_name":"Illinois"
     },
     {
         "fips":"17",
@@ -6901,6 +7096,21 @@
     },
     {
         "fips":"18",
+        "year":"2024",
+        "total_votes":2935043,
+        "dem_votes":1163174,
+        "rep_votes":1720033,
+        "ind_votes":29319,
+        "other_votes":22517,
+        "dem_pct":39.63,
+        "rep_pct":58.6,
+        "ind_pct":1.0,
+        "other_pct":0.77,
+        "state":"18",
+        "state_name":"Indiana"
+    },
+    {
+        "fips":"18",
         "year":"2020",
         "total_votes":3039801,
         "dem_votes":1242505,
@@ -7528,6 +7738,21 @@
         "other_pct":0.0,
         "state":"18",
         "state_name":"Indiana"
+    },
+    {
+        "fips":"19",
+        "year":"2024",
+        "total_votes":1663458,
+        "dem_votes":707266,
+        "rep_votes":926983,
+        "ind_votes":13122,
+        "other_votes":16087,
+        "dem_pct":42.52,
+        "rep_pct":55.73,
+        "ind_pct":0.79,
+        "other_pct":0.97,
+        "state":"19",
+        "state_name":"Iowa"
     },
     {
         "fips":"19",
@@ -8161,6 +8386,21 @@
     },
     {
         "fips":"20",
+        "year":"2024",
+        "total_votes":1296665,
+        "dem_votes":531989,
+        "rep_votes":741464,
+        "ind_votes":15806,
+        "other_votes":7406,
+        "dem_pct":41.03,
+        "rep_pct":57.18,
+        "ind_pct":1.22,
+        "other_pct":0.57,
+        "state":"20",
+        "state_name":"Kansas"
+    },
+    {
+        "fips":"20",
         "year":"2020",
         "total_votes":1377484,
         "dem_votes":570323,
@@ -8758,6 +8998,21 @@
         "other_pct":3.04,
         "state":"20",
         "state_name":"Kansas"
+    },
+    {
+        "fips":"21",
+        "year":"2024",
+        "total_votes":2070052,
+        "dem_votes":700920,
+        "rep_votes":1336227,
+        "ind_votes":16753,
+        "other_votes":16152,
+        "dem_pct":33.86,
+        "rep_pct":64.55,
+        "ind_pct":0.81,
+        "other_pct":0.78,
+        "state":"21",
+        "state_name":"Kentucky"
     },
     {
         "fips":"21",
@@ -9391,6 +9646,21 @@
     },
     {
         "fips":"22",
+        "year":"2024",
+        "total_votes":2006975,
+        "dem_votes":766870,
+        "rep_votes":1208505,
+        "ind_votes":6641,
+        "other_votes":24959,
+        "dem_pct":38.21,
+        "rep_pct":60.22,
+        "ind_pct":0.33,
+        "other_pct":1.24,
+        "state":"22",
+        "state_name":"Louisiana"
+    },
+    {
+        "fips":"22",
         "year":"2020",
         "total_votes":2148062,
         "dem_votes":856034,
@@ -10003,6 +10273,21 @@
         "other_pct":0.0,
         "state":"22",
         "state_name":"Louisiana"
+    },
+    {
+        "fips":"23",
+        "year":"2024",
+        "total_votes":825727,
+        "dem_votes":430512,
+        "rep_votes":374453,
+        "ind_votes":0,
+        "other_votes":20762,
+        "dem_pct":52.14,
+        "rep_pct":45.35,
+        "ind_pct":0.0,
+        "other_pct":2.51,
+        "state":"23",
+        "state_name":"Maine"
     },
     {
         "fips":"23",
@@ -10636,6 +10921,21 @@
     },
     {
         "fips":"24",
+        "year":"2024",
+        "total_votes":2910897,
+        "dem_votes":1804200,
+        "rep_votes":1011578,
+        "ind_votes":27597,
+        "other_votes":67522,
+        "dem_pct":61.98,
+        "rep_pct":34.75,
+        "ind_pct":0.95,
+        "other_pct":2.32,
+        "state":"24",
+        "state_name":"Maryland"
+    },
+    {
+        "fips":"24",
         "year":"2020",
         "total_votes":3037030,
         "dem_votes":1985023,
@@ -11265,19 +11565,19 @@
         "state_name":"Maryland"
     },
     {
-        "fips":"24",
-        "year":"1970",
-        "total_votes":956370,
-        "dem_votes":460422,
-        "rep_votes":484960,
-        "ind_votes":10988,
-        "other_votes":0,
-        "dem_pct":48.14,
-        "rep_pct":50.71,
-        "ind_pct":1.15,
-        "other_pct":0.0,
-        "state":"24",
-        "state_name":"Maryland"
+        "fips":"25",
+        "year":"2024",
+        "total_votes":3381110,
+        "dem_votes":2072304,
+        "rep_votes":1234783,
+        "ind_votes":0,
+        "other_votes":74023,
+        "dem_pct":61.29,
+        "rep_pct":36.52,
+        "ind_pct":0.0,
+        "other_pct":2.19,
+        "state":"25",
+        "state_name":"Massachusetts"
     },
     {
         "fips":"25",
@@ -11911,6 +12211,21 @@
     },
     {
         "fips":"26",
+        "year":"2024",
+        "total_votes":5651652,
+        "dem_votes":2731759,
+        "rep_votes":2810744,
+        "ind_votes":26741,
+        "other_votes":82408,
+        "dem_pct":48.34,
+        "rep_pct":49.73,
+        "ind_pct":0.47,
+        "other_pct":1.46,
+        "state":"26",
+        "state_name":"Michigan"
+    },
+    {
+        "fips":"26",
         "year":"2020",
         "total_votes":5547186,
         "dem_votes":2804045,
@@ -12541,6 +12856,21 @@
     },
     {
         "fips":"27",
+        "year":"2024",
+        "total_votes":3253877,
+        "dem_votes":1656968,
+        "rep_votes":1519017,
+        "ind_votes":23999,
+        "other_votes":53893,
+        "dem_pct":50.92,
+        "rep_pct":46.68,
+        "ind_pct":0.74,
+        "other_pct":1.66,
+        "state":"27",
+        "state_name":"Minnesota"
+    },
+    {
+        "fips":"27",
         "year":"2020",
         "total_votes":3277171,
         "dem_votes":1717077,
@@ -13156,6 +13486,21 @@
     },
     {
         "fips":"28",
+        "year":"2024",
+        "total_votes":1125079,
+        "dem_votes":420926,
+        "rep_votes":689451,
+        "ind_votes":5042,
+        "other_votes":9660,
+        "dem_pct":37.41,
+        "rep_pct":61.28,
+        "ind_pct":0.45,
+        "other_pct":0.86,
+        "state":"28",
+        "state_name":"Mississippi"
+    },
+    {
+        "fips":"28",
         "year":"2020",
         "total_votes":1314475,
         "dem_votes":539398,
@@ -13753,6 +14098,21 @@
         "other_pct":0.0,
         "state":"28",
         "state_name":"Mississippi"
+    },
+    {
+        "fips":"29",
+        "year":"2024",
+        "total_votes":2979048,
+        "dem_votes":1190806,
+        "rep_votes":1739020,
+        "ind_votes":0,
+        "other_votes":49222,
+        "dem_pct":39.97,
+        "rep_pct":58.38,
+        "ind_pct":0.0,
+        "other_pct":1.65,
+        "state":"29",
+        "state_name":"Missouri"
     },
     {
         "fips":"29",
@@ -14386,6 +14746,21 @@
     },
     {
         "fips":"30",
+        "year":"2024",
+        "total_votes":602832,
+        "dem_votes":231858,
+        "rep_votes":351998,
+        "ind_votes":11824,
+        "other_votes":7152,
+        "dem_pct":38.46,
+        "rep_pct":58.39,
+        "ind_pct":1.96,
+        "other_pct":1.19,
+        "state":"30",
+        "state_name":"Montana"
+    },
+    {
+        "fips":"30",
         "year":"2020",
         "total_votes":605570,
         "dem_votes":244786,
@@ -14878,6 +15253,21 @@
         "other_pct":1.26,
         "state":"30",
         "state_name":"Montana"
+    },
+    {
+        "fips":"31",
+        "year":"2024",
+        "total_votes":931163,
+        "dem_votes":361949,
+        "rep_votes":557156,
+        "ind_votes":0,
+        "other_votes":12058,
+        "dem_pct":38.87,
+        "rep_pct":59.83,
+        "ind_pct":0.0,
+        "other_pct":1.29,
+        "state":"31",
+        "state_name":"Nebraska"
     },
     {
         "fips":"31",
@@ -15463,6 +15853,21 @@
         "other_pct":0.0,
         "state":"31",
         "state_name":"Nebraska"
+    },
+    {
+        "fips":"32",
+        "year":"2024",
+        "total_votes":1484840,
+        "dem_votes":705197,
+        "rep_votes":751205,
+        "ind_votes":0,
+        "other_votes":28438,
+        "dem_pct":47.49,
+        "rep_pct":50.59,
+        "ind_pct":0.0,
+        "other_pct":1.92,
+        "state":"32",
+        "state_name":"Nevada"
     },
     {
         "fips":"32",
@@ -16063,6 +16468,21 @@
         "other_pct":0.0,
         "state":"32",
         "state_name":"Nevada"
+    },
+    {
+        "fips":"33",
+        "year":"2024",
+        "total_votes":826205,
+        "dem_votes":418496,
+        "rep_votes":395531,
+        "ind_votes":0,
+        "other_votes":12178,
+        "dem_pct":50.65,
+        "rep_pct":47.87,
+        "ind_pct":0.0,
+        "other_pct":1.47,
+        "state":"33",
+        "state_name":"New Hampshire"
     },
     {
         "fips":"33",
@@ -16696,6 +17116,21 @@
     },
     {
         "fips":"34",
+        "year":"2024",
+        "total_votes":4223751,
+        "dem_votes":2184451,
+        "rep_votes":1944497,
+        "ind_votes":23165,
+        "other_votes":71638,
+        "dem_pct":51.72,
+        "rep_pct":46.04,
+        "ind_pct":0.55,
+        "other_pct":1.7,
+        "state":"34",
+        "state_name":"New Jersey"
+    },
+    {
+        "fips":"34",
         "year":"2020",
         "total_votes":4565182,
         "dem_votes":2608400,
@@ -17326,6 +17761,21 @@
     },
     {
         "fips":"35",
+        "year":"2024",
+        "total_votes":923247,
+        "dem_votes":478727,
+        "rep_votes":423327,
+        "ind_votes":9555,
+        "other_votes":11638,
+        "dem_pct":51.85,
+        "rep_pct":45.85,
+        "ind_pct":1.03,
+        "other_pct":1.26,
+        "state":"35",
+        "state_name":"New Mexico"
+    },
+    {
+        "fips":"35",
         "year":"2020",
         "total_votes":923965,
         "dem_votes":501614,
@@ -17743,6 +18193,21 @@
         "other_pct":5.79,
         "state":"35",
         "state_name":"New Mexico"
+    },
+    {
+        "fips":"36",
+        "year":"2024",
+        "total_votes":7934842,
+        "dem_votes":4375377,
+        "rep_votes":3456869,
+        "ind_votes":0,
+        "other_votes":102596,
+        "dem_pct":55.14,
+        "rep_pct":43.57,
+        "ind_pct":0.0,
+        "other_pct":1.29,
+        "state":"36",
+        "state_name":"New York"
     },
     {
         "fips":"36",
@@ -18376,6 +18841,21 @@
     },
     {
         "fips":"37",
+        "year":"2024",
+        "total_votes":5658056,
+        "dem_votes":2692853,
+        "rep_votes":2880943,
+        "ind_votes":0,
+        "other_votes":84260,
+        "dem_pct":47.59,
+        "rep_pct":50.92,
+        "ind_pct":0.0,
+        "other_pct":1.49,
+        "state":"37",
+        "state_name":"North Carolina"
+    },
+    {
+        "fips":"37",
         "year":"2020",
         "total_votes":5524804,
         "dem_votes":2684292,
@@ -18991,6 +19471,21 @@
     },
     {
         "fips":"38",
+        "year":"2024",
+        "total_votes":367198,
+        "dem_votes":111966,
+        "rep_votes":245943,
+        "ind_votes":0,
+        "other_votes":9289,
+        "dem_pct":30.49,
+        "rep_pct":66.98,
+        "ind_pct":0.0,
+        "other_pct":2.53,
+        "state":"38",
+        "state_name":"North Dakota"
+    },
+    {
+        "fips":"38",
         "year":"2020",
         "total_votes":361819,
         "dem_votes":114902,
@@ -19483,6 +19978,21 @@
         "other_pct":2.49,
         "state":"38",
         "state_name":"North Dakota"
+    },
+    {
+        "fips":"39",
+        "year":"2024",
+        "total_votes":5674445,
+        "dem_votes":2476816,
+        "rep_votes":3119751,
+        "ind_votes":0,
+        "other_votes":77878,
+        "dem_pct":43.65,
+        "rep_pct":54.98,
+        "ind_pct":0.0,
+        "other_pct":1.37,
+        "state":"39",
+        "state_name":"Ohio"
     },
     {
         "fips":"39",
@@ -20116,6 +20626,21 @@
     },
     {
         "fips":"40",
+        "year":"2024",
+        "total_votes":1566173,
+        "dem_votes":499599,
+        "rep_votes":1036213,
+        "ind_votes":16020,
+        "other_votes":14341,
+        "dem_pct":31.9,
+        "rep_pct":66.16,
+        "ind_pct":1.02,
+        "other_pct":0.92,
+        "state":"40",
+        "state_name":"Oklahoma"
+    },
+    {
+        "fips":"40",
         "year":"2020",
         "total_votes":1560699,
         "dem_votes":503890,
@@ -20548,6 +21073,21 @@
         "other_pct":8.69,
         "state":"40",
         "state_name":"Oklahoma"
+    },
+    {
+        "fips":"41",
+        "year":"2024",
+        "total_votes":2203461,
+        "dem_votes":1216305,
+        "rep_votes":904547,
+        "ind_votes":33091,
+        "other_votes":49518,
+        "dem_pct":55.2,
+        "rep_pct":41.05,
+        "ind_pct":1.5,
+        "other_pct":2.25,
+        "state":"41",
+        "state_name":"Oregon"
     },
     {
         "fips":"41",
@@ -21163,6 +21703,21 @@
         "other_pct":1.44,
         "state":"41",
         "state_name":"Oregon"
+    },
+    {
+        "fips":"42",
+        "year":"2024",
+        "total_votes":7021540,
+        "dem_votes":3415514,
+        "rep_votes":3538342,
+        "ind_votes":0,
+        "other_votes":67684,
+        "dem_pct":48.64,
+        "rep_pct":50.39,
+        "ind_pct":0.0,
+        "other_pct":0.96,
+        "state":"42",
+        "state_name":"Pennsylvania"
     },
     {
         "fips":"42",
@@ -21796,6 +22351,21 @@
     },
     {
         "fips":"44",
+        "year":"2024",
+        "total_votes":513354,
+        "dem_votes":285132,
+        "rep_votes":214398,
+        "ind_votes":5045,
+        "other_votes":8779,
+        "dem_pct":55.54,
+        "rep_pct":41.76,
+        "ind_pct":0.98,
+        "other_pct":1.71,
+        "state":"44",
+        "state_name":"Rhode Island"
+    },
+    {
+        "fips":"44",
         "year":"2020",
         "total_votes":517757,
         "dem_votes":307486,
@@ -22426,6 +22996,21 @@
     },
     {
         "fips":"45",
+        "year":"2024",
+        "total_votes":2548140,
+        "dem_votes":1028452,
+        "rep_votes":1483747,
+        "ind_votes":0,
+        "other_votes":35941,
+        "dem_pct":40.36,
+        "rep_pct":58.23,
+        "ind_pct":0.0,
+        "other_pct":1.41,
+        "state":"45",
+        "state_name":"South Carolina"
+    },
+    {
+        "fips":"45",
         "year":"2020",
         "total_votes":2513329,
         "dem_votes":1091541,
@@ -23011,6 +23596,21 @@
     },
     {
         "fips":"46",
+        "year":"2024",
+        "total_votes":428922,
+        "dem_votes":146859,
+        "rep_votes":272081,
+        "ind_votes":7204,
+        "other_votes":2778,
+        "dem_pct":34.24,
+        "rep_pct":63.43,
+        "ind_pct":1.68,
+        "other_pct":0.65,
+        "state":"46",
+        "state_name":"South Dakota"
+    },
+    {
+        "fips":"46",
         "year":"2020",
         "total_votes":422609,
         "dem_votes":150471,
@@ -23503,6 +24103,21 @@
         "other_pct":0.0,
         "state":"46",
         "state_name":"South Dakota"
+    },
+    {
+        "fips":"47",
+        "year":"2024",
+        "total_votes":3060293,
+        "dem_votes":1055039,
+        "rep_votes":1964499,
+        "ind_votes":21511,
+        "other_votes":19244,
+        "dem_pct":34.48,
+        "rep_pct":64.19,
+        "ind_pct":0.7,
+        "other_pct":0.63,
+        "state":"47",
+        "state_name":"Tennessee"
     },
     {
         "fips":"47",
@@ -24121,6 +24736,21 @@
     },
     {
         "fips":"48",
+        "year":"2024",
+        "total_votes":11340202,
+        "dem_votes":4806441,
+        "rep_votes":6375318,
+        "ind_votes":0,
+        "other_votes":158443,
+        "dem_pct":42.38,
+        "rep_pct":56.22,
+        "ind_pct":0.0,
+        "other_pct":1.4,
+        "state":"48",
+        "state_name":"Texas"
+    },
+    {
+        "fips":"48",
         "year":"2020",
         "total_votes":11326874,
         "dem_votes":5259215,
@@ -24721,6 +25351,21 @@
     },
     {
         "fips":"49",
+        "year":"2024",
+        "total_votes":1468521,
+        "dem_votes":556058,
+        "rep_votes":870806,
+        "ind_votes":0,
+        "other_votes":41657,
+        "dem_pct":37.87,
+        "rep_pct":59.3,
+        "ind_pct":0.0,
+        "other_pct":2.84,
+        "state":"49",
+        "state_name":"Utah"
+    },
+    {
+        "fips":"49",
         "year":"2020",
         "total_votes":1505982,
         "dem_votes":560282,
@@ -25198,6 +25843,21 @@
         "other_pct":0.03,
         "state":"49",
         "state_name":"Utah"
+    },
+    {
+        "fips":"50",
+        "year":"2024",
+        "total_votes":369422,
+        "dem_votes":235791,
+        "rep_votes":119395,
+        "ind_votes":5905,
+        "other_votes":8331,
+        "dem_pct":63.83,
+        "rep_pct":32.32,
+        "ind_pct":1.6,
+        "other_pct":2.26,
+        "state":"50",
+        "state_name":"Vermont"
     },
     {
         "fips":"50",
@@ -25831,6 +26491,21 @@
     },
     {
         "fips":"51",
+        "year":"2024",
+        "total_votes":4441017,
+        "dem_votes":2303946,
+        "rep_votes":2043102,
+        "ind_votes":0,
+        "other_votes":93969,
+        "dem_pct":51.88,
+        "rep_pct":46.01,
+        "ind_pct":0.0,
+        "other_pct":2.12,
+        "state":"51",
+        "state_name":"Virginia"
+    },
+    {
+        "fips":"51",
         "year":"2020",
         "total_votes":4460524,
         "dem_votes":2413568,
@@ -26431,6 +27106,21 @@
     },
     {
         "fips":"53",
+        "year":"2024",
+        "total_votes":3870770,
+        "dem_votes":2221254,
+        "rep_votes":1505207,
+        "ind_votes":53768,
+        "other_votes":90541,
+        "dem_pct":57.39,
+        "rep_pct":38.89,
+        "ind_pct":1.39,
+        "other_pct":2.34,
+        "state":"53",
+        "state_name":"Washington"
+    },
+    {
+        "fips":"53",
         "year":"2020",
         "total_votes":4087631,
         "dem_votes":2369612,
@@ -26923,6 +27613,21 @@
         "other_pct":2.89,
         "state":"53",
         "state_name":"Washington"
+    },
+    {
+        "fips":"54",
+        "year":"2024",
+        "total_votes":762390,
+        "dem_votes":214309,
+        "rep_votes":533556,
+        "ind_votes":8947,
+        "other_votes":5578,
+        "dem_pct":28.11,
+        "rep_pct":69.98,
+        "ind_pct":1.17,
+        "other_pct":0.73,
+        "state":"54",
+        "state_name":"West Virginia"
     },
     {
         "fips":"54",
@@ -27523,6 +28228,21 @@
         "other_pct":0.0,
         "state":"54",
         "state_name":"West Virginia"
+    },
+    {
+        "fips":"55",
+        "year":"2024",
+        "total_votes":3416272,
+        "dem_votes":1663976,
+        "rep_votes":1694890,
+        "ind_votes":17694,
+        "other_votes":39712,
+        "dem_pct":48.71,
+        "rep_pct":49.61,
+        "ind_pct":0.52,
+        "other_pct":1.16,
+        "state":"55",
+        "state_name":"Wisconsin"
     },
     {
         "fips":"55",
@@ -28156,6 +28876,21 @@
     },
     {
         "fips":"56",
+        "year":"2024",
+        "total_votes":269048,
+        "dem_votes":69527,
+        "rep_votes":192633,
+        "ind_votes":0,
+        "other_votes":6888,
+        "dem_pct":25.84,
+        "rep_pct":71.6,
+        "ind_pct":0.0,
+        "other_pct":2.56,
+        "state":"56",
+        "state_name":"Wyoming"
+    },
+    {
+        "fips":"56",
         "year":"2020",
         "total_votes":276765,
         "dem_votes":73491,
@@ -28648,6 +29383,21 @@
         "other_pct":3.34,
         "state":"56",
         "state_name":"Wyoming"
+    },
+    {
+        "fips":"11",
+        "year":"2024",
+        "total_votes":317792,
+        "dem_votes":286787,
+        "rep_votes":20659,
+        "ind_votes":2726,
+        "other_votes":7620,
+        "dem_pct":90.24,
+        "rep_pct":6.5,
+        "ind_pct":0.86,
+        "other_pct":2.4,
+        "state":"11",
+        "state_name":"District of Columbia"
     },
     {
         "fips":"11",

@@ -74,7 +74,8 @@ for state_fips in states:
 
 
 # Convert the list of dictionaries to a DataFrame
-election_df = pd.DataFrame(all_data).query('year != "2024"')
+election_df = pd.DataFrame(all_data).query('year != "1970"')
+# election_df = pd.DataFrame(all_data)
 
 election_df['state_name'] = election_df['state'].map(fips_name)
 
