@@ -42,6 +42,10 @@ def fetch_state_data(fips_code):
             ind_pct = cells[11].text.strip().replace('%', '')
             other_pct = cells[12].text.strip().replace('%', '')
             
+            # Combine ind and other votes
+            combined_ind_votes = int(ind_votes) + int(other_votes) if ind_votes.isdigit() and other_votes.isdigit() else 0
+            combined_ind_pct = float(ind_pct) + float(other_pct) if ind_pct and other_pct else 0
+
             # Append to rows list as a dictionary
             rows.append({
                 'fips': fips_code,
@@ -49,13 +53,11 @@ def fetch_state_data(fips_code):
                 'total_votes': int(total_votes) if total_votes.isdigit() else 0,
                 'dem_votes': int(dem_votes) if dem_votes.isdigit() else 0,
                 'rep_votes': int(rep_votes) if rep_votes.isdigit() else 0,
-                'ind_votes': int(ind_votes) if ind_votes.isdigit() else 0,
-                'other_votes': int(other_votes) if other_votes.isdigit() else 0,
+                'ind_votes': combined_ind_votes,  # Use combined votes
                 'dem_pct': float(dem_pct) if dem_pct else 0,
                 'rep_pct': float(rep_pct) if rep_pct else 0,
-                'ind_pct': float(ind_pct) if ind_pct else 0,
-                'other_pct': float(other_pct) if other_pct else 0,
-                'state': state_fips
+                'ind_pct': combined_ind_pct,  # Use combined percentage
+                'state': fips_code
             })
     return rows
 
@@ -71,7 +73,6 @@ for state_fips in states:
     print(f"Fetching data for FIPS {state_fips}")
     state_data = fetch_state_data(state_fips)
     all_data.extend(state_data)
-
 
 # Convert the list of dictionaries to a DataFrame
 election_df = pd.DataFrame(all_data).query('year != "1970"')
