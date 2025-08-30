@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
-from cartopy import crs as ccrs
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import matplotlib.font_manager as fm
 
@@ -26,25 +25,37 @@ counties_src.columns = counties_src.columns.str.lower()
 cols_keep = ['fips', 'name', 'st_abbrev', 'geometry']
 counties_gdf = counties_src[cols_keep].copy()
 
-# Reproject to Albers Equal Area for consistency
-albo = ccrs.AlbersEqualArea(
-    central_longitude=-96,
-    central_latitude=37.5,
-    false_easting=0.0,
-    false_northing=0.0,
-    standard_parallels=(29.5, 45.5),
-    globe=None,
-)
+# Reproject to Albers Equal Area for consistency (CONUS Albers: EPSG:5070)
+albers_epsg = "EPSG:5070"
 
 # Reproject to Albers
-counties_gdf = counties_gdf.to_crs(albo.proj4_init)
+counties_gdf = counties_gdf.to_crs(albers_epsg)
 states = gpd.read_file("https://stilesdata.com/gis/usa_states_esri_simple.json").query(
-    '~STATE_NAME.isin(["Hawaii", "Alaska"])').to_crs(albo.proj4_init)
+    '~STATE_NAME.isin(["Hawaii", "Alaska"])').to_crs(albers_epsg)
 
 # Define the desired breaks and corresponding colors for both parties
-common_breaks = [0.50, 0.55, 0.60, 0.65, 0.70, 1.0]  # Adjusted to align labels correctly
-rep_ramp = ["#ffd3c3", "#f89a8b", "#E6655A", "#c52622", "#9a040b", "#670000"]
-dem_ramp = ["#BBE6F8", "#8CC8F6", "#5194C3", "#166296", "#01446D", "#042853"]
+# Add an 80% bin so the darkest shade is reserved for 80%+ counties
+common_breaks = [0.50, 0.55, 0.60, 0.65, 0.70, 0.80, 1.0]
+
+# Slightly lighter ramps to avoid overly dark maps
+rep_ramp = [
+    "#ffe5de",  # <=50%
+    "#f8c9bd",  # 50-55%
+    "#f49e8e",  # 55-60%
+    "#e97061",  # 60-65%
+    "#d7493e",  # 65-70%
+    "#b92b28",  # 70-80%
+    "#8f0f0f"   # 80%+
+]
+dem_ramp = [
+    "#e4f3fb",  # <=50%
+    "#c7e6fb",  # 50-55%
+    "#9bc8f7",  # 55-60%
+    "#6da0d9",  # 60-65%
+    "#427ab6",  # 65-70%
+    "#215b93",  # 70-80%
+    "#0a3f6d"   # 80%+
+]
 
 # Create custom colormaps
 blues_cmap = ListedColormap(dem_ramp)
@@ -104,8 +115,8 @@ for year in years:
     cbar_ax = fig.add_axes([0.25, cbar_bottom, cbar_width, 0.02])  # Republican colorbar position
     cbar_ax2 = fig.add_axes([0.55, cbar_bottom, cbar_width, 0.02])  # Democratic colorbar position
 
-    tickBreaks=[0.50, 0.55, 0.60, 0.65, 0.70]
-    tickLabels=['50%', '55%', '60%', '65%', '70%+']
+    tickBreaks=[0.50, 0.55, 0.60, 0.65, 0.70, 0.80]
+    tickLabels=['50%', '55%', '60%', '65%', '70%', '80%+']
 
     # Republican colorbar
     cbar = fig.colorbar(

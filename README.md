@@ -220,6 +220,6 @@ Note: 2024 county results are deduplicated by FIPS before merging.
 
 ![](visuals/pres_state_symbols_2020.png?raw=true)
 
-- `visuals/county_shift_2016_2020.png`: A symbol map with arrows representing a presidential vote margin shift from 2016 to 2020. Arrows moving to the right show a shift towards the Republicans and those moving to the left indicate a change towards the Democrats. The colors represent the direction of the shift, not the winner. 
+- `visuals/county_shift_2020_2024.png`: A symbol map with arrows representing a presidential vote margin shift from 2020 to 2024. Arrows moving to the right show a shift towards the Republicans and those moving to the left indicate a change towards the Democrats. The colors represent the direction of the shift, not the winner. 
 
-![](visuals/county_shift_2016_2020.png?raw=true)
+![](visuals/county_shift_2020_2024.png?raw=true)
