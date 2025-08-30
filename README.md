@@ -107,11 +107,13 @@ Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020
         "votes_dem":3028885.0,
         "votes_rep":1145530.0,
         "votes_all":4264365.0,
-        "dem_pct":0.71,
-        "rep_pct":0.27,
+        "dem_pct":71.0,
+        "rep_pct":27.0,
         "winner":"dem"
     },
 ```
+
+Percent fields (`dem_pct`, `rep_pct`) use 0–100 percentage points.
 
 Election results data by state for the years 1924 to 2020.
 
@@ -197,8 +199,8 @@ Note: 2024 county results are deduplicated by FIPS before merging.
         "votes_dem":3028885,
         "votes_rep":1145530,
         "votes_all":4264365,
-        "dem_pct":0.71,
-        "rep_pct":0.27,
+        "dem_pct":71.0,
+        "rep_pct":27.0,
         "winner":"dem",
         "population":10014009.0,
         "white_alone":2563609.0,
