@@ -11,6 +11,8 @@ Pipfile.lock
 # C extensions
 *.so
 
+notebooks/
+
 # Distribution / packaging
 .Python
 build/

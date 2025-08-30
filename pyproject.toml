@@ -1,0 +1,18 @@
+[project]
+name = "presidential-elections"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "altair-stiles==0.0.2",
+    "beautifulsoup4==4.12.3",
+    "geopandas==1.0.1",
+    "jenkspy==0.4.1",
+    "mapclassify==2.8.0",
+    "matplotlib==3.9.2",
+    "numpy==1.26.4",
+    "pandas==2.2.2",
+    "requests==2.32.3",
+    "us==3.2.0",
+]

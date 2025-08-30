@@ -1,13 +1,28 @@
 import pandas as pd
 import json
+import os
 
 # Load your cleaned election data
 with open("data/processed/presidential_county_results.json", "r") as file:
     election_data = pd.read_json(file)
 
+# Optionally append 2024 results if present and not already included in base
+path_2024 = "data/processed/presidential_county_results_2024.json"
+base_has_2024 = (election_data.get("year").astype(str) == "2024").any() if "year" in election_data.columns else False
+if os.path.exists(path_2024) and not base_has_2024:
+    election_data_2024 = pd.read_json(path_2024)
+    election_data = pd.concat([election_data, election_data_2024], ignore_index=True)
+
 # Ensure 'year' and 'fips' are strings
 election_data['year'] = election_data['year'].astype(str)
 election_data['fips'] = election_data['fips'].astype(str)
+
+# De-duplicate by (year, fips) to prevent double counting
+before_dedup_count = len(election_data)
+election_data = election_data.sort_values(["year", "fips"]).drop_duplicates(subset=["year", "fips"], keep="last").reset_index(drop=True)
+after_dedup_count = len(election_data)
+if after_dedup_count != before_dedup_count:
+    print(f"Dropped {before_dedup_count - after_dedup_count} duplicate election rows (by year+fips)")
 
 # Load the population data you previously fetched and saved
 population_data_2000 = pd.read_json("data/processed/county_population_census_2000.json")
@@ -34,7 +49,8 @@ population_map = {
     "2008": population_data_2010,
     "2012": population_data_2010,
     "2016": population_data_2010,
-    "2020": population_data_2020
+    "2020": population_data_2020,
+    "2024": population_data_2020
 }
 
 # Function to merge population data with election data based on the year

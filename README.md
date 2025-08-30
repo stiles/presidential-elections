@@ -166,7 +166,7 @@ Shows changes in voting percentages by county between the 2016 and 2020 presiden
 ```
 
 ### 5. County results with population
-Combined county-level election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020. Data are mapped to the closest Census decade: 
+Combined county-level election results with population data for the years 2000, 2004, 2008, 2012, 2016, 2020, 2024. Population is mapped to the closest decennial census; 2024 uses 2020.
 
 **Data:** `data/processed/presidential_county_results_with_population.json`
 
@@ -178,9 +178,12 @@ population_map = {
     "2008": population_data_2010,
     "2012": population_data_2010,
     "2016": population_data_2010,
-    "2020": population_data_2020
+    "2020": population_data_2020,
+    "2024": population_data_2020
 }
 ```
+
+Note: 2024 county results are deduplicated by FIPS before merging.
 
 **Sample:**
 *List of dictionaries for each county.*
