@@ -1,7 +1,7 @@
 [project]
 name = "presidential-elections"
 version = "0.1.0"
-description = "Add your description here"
+description = "Scripts for analyzing US presidential elections data at the county level from 2000-2024."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
