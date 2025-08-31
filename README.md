@@ -17,7 +17,7 @@ The project includes scripts to process raw election data, fetch population data
 
 - `02_apply_population_results.py`: Merges the population data with the election results data.
 
-- `03_output_geofiles_maps.py`: Merges elections results/population data with county-level geography files and outputs GeoJSON files. It also outputs choropleth maps with the results from 2000-2020. 
+- `03_output_geofiles_maps.py`: Merges elections results/population data with county-level geography files and outputs GeoJSON files. It also outputs choropleth maps with the results from 2000-2024. 
 
 - `04_analyze_results.py`: Analyzes the merged election and population data, generating metrics like the number of counties won by each party.
 
@@ -30,6 +30,17 @@ The project includes scripts to process raw election data, fetch population data
 - `08_output_state_symbol_maps.py.py`: Generates proportional symbol maps at the state level for each election year, saving the output as PNG files. 
 
 ## Data Files
+
+## 2024 updates
+
+- 2024 county results use 2020 decennial population
+- 2024 county results are deduplicated by FIPS before merging
+- Percent fields (`dem_pct`, `rep_pct`) are 0–100
+- Choropleth bins use 50, 55, 60, 65, 70, 80, 100 (with an 80%+ bin)
+- Color ramps are lighter; colorbars sit at the top with no borders
+- Title is left aligned at top; source text sits bottom left
+- Layout margins are tightened to reduce whitespace
+- Cartopy is removed; maps use EPSG:5070 (CONUS Albers)
 
 ### 1. Population
 County population data for the respective years fetched from the Census API.
@@ -210,7 +221,7 @@ Note: 2024 county results are deduplicated by FIPS before merging.
 
 ## Map sketches
 
-- `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Darker shades represent a greater vote share by the winning party. 
+- `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020, 2024). Darker shades represent a greater vote share by the winning party. 
 
 ![](visuals/presidential_results_2020.png?raw=true)
 
