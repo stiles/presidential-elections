@@ -7,7 +7,7 @@ This project collects, analyzes and visualizes U.S. presidential election result
 
 The project includes scripts to process raw election data, fetch population data from the Census API, merge these datasets and generate various output files for further analysis and visualization, such as this scatter plot that shows the relationship between the political parties and the population characteristics of the places they win:
 
-![](visuals/presidential_pop_scatter_2020.png?raw=true)
+![](visuals/presidential_pop_scatter_2024.png?raw=true)
 
 ## Scripts
 
@@ -30,17 +30,6 @@ The project includes scripts to process raw election data, fetch population data
 - `08_output_state_symbol_maps.py.py`: Generates proportional symbol maps at the state level for each election year, saving the output as PNG files. 
 
 ## Data Files
-
-## 2024 updates
-
-- 2024 county results use 2020 decennial population
-- 2024 county results are deduplicated by FIPS before merging
-- Percent fields (`dem_pct`, `rep_pct`) are 0–100
-- Choropleth bins use 50, 55, 60, 65, 70, 80, 100 (with an 80%+ bin)
-- Color ramps are lighter; colorbars sit at the top with no borders
-- Title is left aligned at top; source text sits bottom left
-- Layout margins are tightened to reduce whitespace
-- Cartopy is removed; maps use EPSG:5070 (CONUS Albers)
 
 ### 1. Population
 County population data for the respective years fetched from the Census API.
@@ -86,47 +75,63 @@ Metrics such as the number of counties won by each party, the share of counties,
 *List of dictionaries for each election. File includes the number of counties won by each party; the percentage of all counties in the US won by each party; the population of the counties won by each party; the share of the national population -- not the votes, just the population -- represented in those counties; and the percentage of the population that is "white non-Hispanic" in the counties won by each party.*
 
 ```json
-    {
-        "year":2020,
-        "num_r_counties":2596,
-        "num_d_counties":558,
-        "share_r_counties":0.82,
-        "share_d_counties":0.18,
-        "pop_r_counties":131721370.0,
-        "pop_d_counties":199294337.0,
-        "share_r_population":0.4,
-        "share_d_population":0.6,
-        "pct_white_r_counties":73.31,
-        "pct_white_d_counties":47.61
-    }
+    [
+        {
+            "year":2020,
+            "num_r_counties":2596,
+            "num_d_counties":558,
+            "share_r_counties":0.82,
+            "share_d_counties":0.18,
+            "pop_r_counties":131721370.0,
+            "pop_d_counties":199294337.0,
+            "share_r_population":0.4,
+            "share_d_population":0.6,
+            "pct_white_r_counties":73.31,
+            "pct_white_d_counties":47.61
+        },
+        {
+            "year":2024,
+            "num_r_counties":2651,
+            "num_d_counties":436,
+            "share_r_counties":0.86,
+            "share_d_counties":0.14,
+            "pop_r_counties":162294706.0,
+            "pop_d_counties":167763659.0,
+            "share_r_population":0.49,
+            "share_d_population":0.51,
+            "pct_white_r_counties":67.64,
+            "pct_white_d_counties":48.37
+        }
+    ]
 ```
 
 ### 3. Raw results
-Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020.
+Election results data by county for the years 2000, 2004, 2008, 2012, 2016, 2020, 2024.
 
 **Data:** `data/processed/presidential_county_results.json`
 
 **Sample:**
-*List of dictionaries for each county.*
+*List of dictionaries for each county. Here's one object:*
 
 ```json
         {
         "fips":"06037",
         "county_name":"LOS ANGELES",
         "state_po":"CA",
-        "year":"2020",
-        "votes_dem":3028885.0,
-        "votes_rep":1145530.0,
-        "votes_all":4264365.0,
-        "dem_pct":71.0,
-        "rep_pct":27.0,
+        "year":"2024",
+        "votes_dem":2416879.0,
+        "votes_rep":1191577.0,
+        "votes_all":3747099.0,
+        "dem_pct":64.5,
+        "rep_pct":31.8,
+        "margin":-32.7,
         "winner":"dem"
-    },
+    }
 ```
 
 Percent fields (`dem_pct`, `rep_pct`) use 0–100 percentage points.
 
-Election results data by state for the years 1924 to 2020.
+Election results data by state for the years 1924 to 2024.
 
 **Data:** `data/processed/presidential_election_results_by_state.json`
 
@@ -223,15 +228,15 @@ Note: 2024 county results are deduplicated by FIPS before merging.
 
 - `visuals/presidential_results_{YEAR}.png`: Choropleth maps for each election year (2000, 2004, 2008, 2012, 2016, 2020, 2024). Darker shades represent a greater vote share by the winning party. 
 
-![](visuals/presidential_results_2020.png?raw=true)
+![](visuals/presidential_results_2024.png?raw=true)
 
-- `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020). Larger circles represent more votes, and colors indicate the winning party (red for Republicans, blue for Democrats).
+- `visuals/pres_county_symbols_{YEAR}.png`: Proportional symbol maps for each election year (2000, 2004, 2008, 2012, 2016, 2020, 2024). Larger circles represent more votes, and colors indicate the winning party (red for Republicans, blue for Democrats).
 
-![](visuals/pres_county_symbols_2020.png?raw=true)
+![](visuals/pres_county_symbols_2024.png?raw=true)
 
-- `visuals/pres_state_symbols_{YEAR}.png`: Proportional symbol maps for each election year (1924-2020). Larger circles represent the winning party's vote total, and the colors indicate the winning party (red for Republicans, blue for Democrats).
+- `visuals/pres_state_symbols_{YEAR}.png`: Proportional symbol maps for each election year (1924-2024). Larger circles represent the winning party's vote total, and the colors indicate the winning party (red for Republicans, blue for Democrats).
 
-![](visuals/pres_state_symbols_2020.png?raw=true)
+![](visuals/pres_state_symbols_2024.png?raw=true)
 
 - `visuals/county_shift_2020_2024.png`: A symbol map with arrows representing a presidential vote margin shift from 2020 to 2024. Arrows moving to the right show a shift towards the Republicans and those moving to the left indicate a change towards the Democrats. The colors represent the direction of the shift, not the winner. 
 

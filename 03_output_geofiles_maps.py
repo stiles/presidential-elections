@@ -35,7 +35,8 @@ states = gpd.read_file("https://stilesdata.com/gis/usa_states_esri_simple.json")
 
 # Define the desired breaks and corresponding colors for both parties
 # Add an 80% bin so the darkest shade is reserved for 80%+ counties
-common_breaks = [0.50, 0.55, 0.60, 0.65, 0.70, 0.80, 1.0]
+# Note: dem_pct/rep_pct are stored as 0–100 percentages in the data
+common_breaks = [50, 55, 60, 65, 70, 80, 100]
 
 # Slightly lighter ramps to avoid overly dark maps
 rep_ramp = [
@@ -100,22 +101,27 @@ for year in years:
     )
 
     # Plot state boundaries
-    states.boundary.plot(ax=ax, linewidth=0.5, color="black")
+    states.boundary.plot(ax=ax, linewidth=0.5, color="white")
 
     # Customize axes
-    ax.set_title(f'Presidential Election Results by County - {year}', fontsize=15)
     ax.axis("off")
+    # Figure-level title (left-aligned) and small source line bottom-left
+    fig.suptitle(
+        f'US presidential election results, by county, in {year}',
+        x=0.01, y=0.97, ha='left', va='top', fontsize=15, fontweight='bold'
+    )
+    fig.text(0.01, 0.02, 'Map: Matt Stiles | Data sources: MIT Election Lab / Dave Leip',
+             ha='left', va='bottom', fontsize=9, color='#666666')
+    # Tighten left/right margins; add a bit more space below colorbars
+    fig.subplots_adjust(top=0.88, bottom=0.08, left=0.01, right=0.99)
 
-    # Adjust colorbars to be narrower, centered relative to the map, and reduce space
-    cbar_width = 0.25  # Narrower width to avoid bumping
-    cbar_spacing = 0.05  # Spacing between the colorbars
-    cbar_bottom = -0.05  # Move the colorbars closer to the map
+    # Place colorbars at the top, under the title
+    cbar_width = 0.20
+    cbar_y = 0.92
+    cbar_ax = fig.add_axes([0.25, cbar_y, cbar_width, 0.015])  # Republican colorbar position
+    cbar_ax2 = fig.add_axes([0.60, cbar_y, cbar_width, 0.015])  # Democratic colorbar position
 
-    # Center positions with spacing
-    cbar_ax = fig.add_axes([0.25, cbar_bottom, cbar_width, 0.02])  # Republican colorbar position
-    cbar_ax2 = fig.add_axes([0.55, cbar_bottom, cbar_width, 0.02])  # Democratic colorbar position
-
-    tickBreaks=[0.50, 0.55, 0.60, 0.65, 0.70, 0.80]
+    tickBreaks=[50, 55, 60, 65, 70, 80]
     tickLabels=['50%', '55%', '60%', '65%', '70%', '80%+']
 
     # Republican colorbar
@@ -125,6 +131,10 @@ for year in years:
     )
     cbar.set_label('Republican %', fontsize=10)
     cbar.ax.set_xticklabels(tickLabels, fontsize=8)
+    # Remove colorbar outline and spines
+    cbar.outline.set_visible(False)
+    for spine in cbar_ax.spines.values():
+        spine.set_visible(False)
 
     # Democratic colorbar
     cbar2 = fig.colorbar(
@@ -133,9 +143,14 @@ for year in years:
     )
     cbar2.set_label('Democratic %', fontsize=10)
     cbar2.ax.set_xticklabels(tickLabels, fontsize=8)
+    # Remove colorbar outline and spines
+    cbar2.outline.set_visible(False)
+    for spine in cbar_ax2.spines.values():
+        spine.set_visible(False)
 
-    # Save the plot
-    plt.savefig(f'visuals/presidential_results_{year}.png', bbox_inches='tight')
+    # Remove any default axes margins and save with minimal padding
+    ax.margins(0)
+    plt.savefig(f'visuals/presidential_results_{year}.png', bbox_inches='tight', pad_inches=0.1)
     plt.close()
 
     gdf.to_file(f'data/geo/presidential_election_{year}.geojson', driver="GeoJSON")
